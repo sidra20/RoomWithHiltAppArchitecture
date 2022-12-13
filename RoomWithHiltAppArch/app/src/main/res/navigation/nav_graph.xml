@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/allNotes">
+
+    <fragment
+        android:id="@+id/addNote"
+        android:name="com.sidra.roomhilt.AddNote"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_add_note">
+        <action
+            android:id="@+id/action_addNote_to_allNotes"
+            app:destination="@id/allNotes" />
+    </fragment>
+    <fragment
+        android:id="@+id/allNotes"
+        android:name="com.sidra.roomhilt.AllNotes"
+        android:label="My Notes"
+        tools:layout="@layout/fragment_all_notes">
+        <action
+            android:id="@+id/action_allNotes_to_addNote"
+            app:destination="@id/addNote" />
+        <action
+            android:id="@+id/action_allNotes_to_updateNote"
+            app:destination="@id/updateNote" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateNote"
+        android:name="com.sidra.roomhilt.UpdateNote"
+        android:label="Update Note"
+        tools:layout="@layout/fragment_update_note" />
+</navigation>

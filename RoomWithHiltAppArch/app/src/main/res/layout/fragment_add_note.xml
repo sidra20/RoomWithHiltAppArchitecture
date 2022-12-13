@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:viewBindingIgnore="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodl"
+            type="com.sidra.roomhilt.uilayer.viewmodel.MyViewModel" />
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_above="@+id/noteaddpart"
+       android:orientation="vertical">
+
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardElevation="5dp"
+           android:layout_margin="5dp"
+           app:cardUseCompatPadding="true"
+           app:cardCornerRadius="5dp">
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/title"
+               android:hint="Title"
+               android:paddingVertical="10dp"
+               android:text="@={viewmodl.title}"
+               android:layout_margin="10dp"
+               android:maxLines="1"
+               android:textSize="18sp"
+               android:textColor="@color/black"
+               android:background="@color/white"
+               android:textStyle="bold"
+               />
+       </androidx.cardview.widget.CardView>
+
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           app:cardElevation="5dp"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginBottom="5dp"
+           app:cardUseCompatPadding="true"
+           app:cardCornerRadius="5dp">
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:id="@+id/desc"
+               android:hint="Details"
+               android:text="@={viewmodl.desc}"
+               android:layout_margin="10dp"
+               android:maxLines="1"
+               android:textSize="18sp"
+               android:gravity="top"
+               android:textColor="@color/black"
+               android:background="@color/white"
+               android:textStyle="bold"
+               />
+       </androidx.cardview.widget.CardView>
+
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="end"
+        android:id="@+id/noteaddpart"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="15dp"
+            android:text="Save"
+            android:onClick="@{()->viewmodl.saveNote()}"
+            android:id="@+id/save"
+            />
+    </LinearLayout>
+</RelativeLayout>
+
+</layout>
