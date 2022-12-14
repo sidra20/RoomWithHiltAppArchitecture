@@ -1,6 +1,7 @@
 package com.sidra.roomhilt.uilayer.viewmodel
 
 import android.app.Application
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -16,8 +17,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MyViewModel @Inject constructor(private val repository: MyRepository,  app: Application) : AndroidViewModel(app) {
-
+class MyViewModel @Inject constructor(private val repository: MyRepository) : ViewModel() {
+    var note= Note()
     var notes = repository.notes
     var title = MutableLiveData<String>()
     var desc = MutableLiveData<String>()
@@ -42,14 +43,22 @@ class MyViewModel @Inject constructor(private val repository: MyRepository,  app
 
     fun saveNote()
     {
-        if(title.value!!.isNotEmpty() && desc.value!!.isNotEmpty()){
-            val t = title.value!!.toString()
-            val d = desc.value!!.toString()
+        try {
+            if(title.value!!.isNotEmpty() && desc.value!!.isNotEmpty()){
+                val t = title.value!!.toString()
+                val d = desc.value!!.toString()
 
-            val obj = Note(0,t,d)
-            insertNote(obj)
-            Toast.makeText(getApplication(), "Note Added!", Toast.LENGTH_SHORT).show()
+                val obj = Note(0,t,d)
+                insertNote(obj)
+
+
+//            Toast.makeText(getApplication(), "Note Added!", Toast.LENGTH_SHORT).show()
+            }
         }
+        catch (e:Exception){
+            Log.d("main",""+e.message)
+        }
+
     }
 
 
