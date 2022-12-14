@@ -50,6 +50,8 @@ class MyViewModel @Inject constructor(private val repository: MyRepository) : Vi
 
                 val obj = Note(0,t,d)
                 insertNote(obj)
+                title.value=""
+                desc.value=""
 
 
 //            Toast.makeText(getApplication(), "Note Added!", Toast.LENGTH_SHORT).show()
