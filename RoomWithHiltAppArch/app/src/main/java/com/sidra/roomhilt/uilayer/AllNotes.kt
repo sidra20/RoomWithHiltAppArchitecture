@@ -68,8 +68,8 @@ class AllNotes : Fragment(), NotesAdapter.Listener{
 
     }
     override fun itemClick(note: Note) {
-        Toast.makeText(context,"Selected note is ${note.title}",Toast.LENGTH_SHORT).show()
-        val dialog = AlertDialog.Builder(context)
+        Toast.makeText(this.context,"Selected note is ${note.title}",Toast.LENGTH_SHORT).show()
+        val dialog = AlertDialog.Builder(this.requireActivity())
         dialog.setTitle("Update/Delete")
             .setCancelable(true)
             .setMessage("Do you want to update or delete that Note?")

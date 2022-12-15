@@ -29,7 +29,6 @@ class AddNote : Fragment() {
     @Inject
     lateinit var factory: NotesModelFactory
 
-    private lateinit var note: Note
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
