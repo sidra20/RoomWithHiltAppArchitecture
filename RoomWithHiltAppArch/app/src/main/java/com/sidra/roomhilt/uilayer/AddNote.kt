@@ -44,6 +44,13 @@ class AddNote : Fragment() {
         binding.cancel.setOnClickListener {
             findNavController().navigate(R.id.action_addNote_to_allNotes)
         }
+
+        viewModel.msg.observe(requireActivity(), Observer {
+            it.getContentIfNotHandled()?.let{
+                Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+            }
+        })
+
 //        val bundle=Bundle()
 //        bundle.getBoolean("updatetrue")
 //        if(bundle.getBoolean("updatetrue")) {

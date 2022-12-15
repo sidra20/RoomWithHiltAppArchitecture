@@ -50,11 +50,11 @@ class AllNotes : Fragment(), NotesAdapter.Listener{
 
 
 
+
         Handler(Looper.getMainLooper()).postDelayed(object : Runnable {
             override fun run() {
                 viewModel.notes.observe(requireActivity(), Observer{
                     adapter.updateList(it)
-
                     binding.progress.visibility=View.GONE
 
                 })            }
