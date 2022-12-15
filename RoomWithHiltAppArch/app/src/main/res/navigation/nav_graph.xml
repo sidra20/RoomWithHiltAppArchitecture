@@ -30,5 +30,18 @@
         android:id="@+id/updateNote"
         android:name="com.sidra.roomhilt.uilayer.UpdateNote"
         android:label="Update Note"
-        tools:layout="@layout/fragment_update_note" />
+        tools:layout="@layout/fragment_update_note" >
+        <action
+            android:id="@+id/action_updateNote_to_allNotes"
+            app:destination="@id/allNotes" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="desc"
+            app:argType="string" />
+    </fragment>
 </navigation>

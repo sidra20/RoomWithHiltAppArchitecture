@@ -20,7 +20,19 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:layout_above="@+id/noteaddpart"
+       android:padding="5dp"
        android:orientation="vertical">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Add Note"
+           android:padding="5dp"
+           android:textSize="25sp"
+           android:layout_marginTop="20dp"
+           android:layout_marginLeft="10dp"
+           android:layout_marginBottom="10dp"
+           android:textStyle="bold"
+           android:textColor="@color/black"/>
 
        <androidx.cardview.widget.CardView
            android:layout_width="match_parent"
@@ -34,10 +46,10 @@
                android:layout_height="wrap_content"
                android:id="@+id/title"
                android:hint="Title"
+               android:inputType="text"
                android:paddingVertical="10dp"
                android:text="@={viewmodl.title}"
                android:layout_margin="10dp"
-               android:maxLines="1"
                android:textSize="18sp"
                android:textColor="@color/black"
                android:background="@color/white"
@@ -61,7 +73,6 @@
                android:hint="Details"
                android:text="@={viewmodl.desc}"
                android:layout_margin="10dp"
-               android:maxLines="1"
                android:textSize="18sp"
                android:gravity="top"
                android:textColor="@color/black"
@@ -93,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="15dp"
-            android:text="Save"
+            android:text="@={viewmodl.saveupdateBtn}"
             android:backgroundTint="@color/purple_200"
             android:onClick="@{()->viewmodl.saveNote()}"
             android:id="@+id/save"

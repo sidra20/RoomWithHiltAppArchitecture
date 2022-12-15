@@ -58,20 +58,31 @@ class AllNotes : Fragment(), NotesAdapter.Listener{
                     binding.progress.visibility=View.GONE
 
                 })            }
-        },1400)
-
-
-
-
+        },1000)
         return binding.root
     }
 
+    fun updateNote(note: Note){
+        val action =AllNotesDirections.actionAllNotesToUpdateNote(note.id.toString(), note.title.toString(), note.detail.toString())
+        findNavController().navigate(action)
+
+    }
     override fun itemClick(note: Note) {
+        Toast.makeText(context,"Selected note is ${note.title}",Toast.LENGTH_SHORT).show()
         val dialog = AlertDialog.Builder(context)
         dialog.setTitle("Update/Delete")
             .setCancelable(true)
             .setMessage("Do you want to update or delete that Note?")
             .setPositiveButton("Update", { dialogInterface, i ->
+
+               updateNote(note)
+//                viewModel.isUpdate=true
+//                val bundle = Bundle()
+//                bundle.putBoolean("updatetrue",true)
+//                bundle.putInt("noteid",note.id)
+//                bundle.putString("title",note.title)
+//                bundle.putString("desc",note.detail)
+//                viewModel.initUpdate(note)
 
             })
             .setNegativeButton("Delete", {

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sidra.roomhilt.R
 import com.sidra.roomhilt.databinding.FragmentAddNoteBinding
+import com.sidra.roomhilt.datalayer.Note
 import com.sidra.roomhilt.uilayer.viewmodel.MyViewModel
 import com.sidra.roomhilt.uilayer.viewmodel.NotesModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,8 @@ class AddNote : Fragment() {
     @Inject
     lateinit var factory: NotesModelFactory
 
+    private lateinit var note: Note
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +44,20 @@ class AddNote : Fragment() {
         binding.cancel.setOnClickListener {
             findNavController().navigate(R.id.action_addNote_to_allNotes)
         }
+//        val bundle=Bundle()
+//        bundle.getBoolean("updatetrue")
+//        if(bundle.getBoolean("updatetrue")) {
+//            var id = bundle.getInt("noteid")
+//            var title = bundle.getString("title")
+//            var desc = bundle.getString("desc")
+//            note = Note(id, title!!, desc!!)
+//            viewModel.initUpdate(note)
+//        }
+//        if(bundle.getBoolean("updatetrue"))
+//        {
+//
+//            viewModel.initUpdate(note)
+//        }
 
 
 

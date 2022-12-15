@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sidra.roomhilt.datalayer.MyRepository
 import com.sidra.roomhilt.datalayer.Note
+import com.sidra.roomhilt.domainlayer.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -22,11 +23,18 @@ class MyViewModel @Inject constructor(private val repository: MyRepository) : Vi
     var notes = repository.notes
     var title = MutableLiveData<String>()
     var desc = MutableLiveData<String>()
+    private val statusmsg = MutableLiveData<Event<String>>()
+    val msg:LiveData<Event<String>>
+    get() = statusmsg
+    var saveupdateBtn = MutableLiveData<String>()
+    var isUpdate = false
+    private lateinit var noteToUpdate : Note
 
     init{
         viewModelScope.launch {
             repository.notes
         }
+        saveupdateBtn.value="Save"
     }
 
     fun insertNote(note: Note)= viewModelScope.launch {
@@ -40,6 +48,14 @@ class MyViewModel @Inject constructor(private val repository: MyRepository) : Vi
     fun updateNote(note: Note)= viewModelScope.launch {
         repository.update(note)
     }
+    fun initUpdate(note: Note)
+    {
+        title.value=note.title
+        desc.value=note.detail
+        isUpdate=true
+        noteToUpdate=note
+        saveupdateBtn.value="Update"
+    }
 
     fun saveNote()
     {
@@ -52,6 +68,8 @@ class MyViewModel @Inject constructor(private val repository: MyRepository) : Vi
                 insertNote(obj)
                 title.value=""
                 desc.value=""
+
+                statusmsg.value = Event("Note added successfully!")
 
 
 //            Toast.makeText(getApplication(), "Note Added!", Toast.LENGTH_SHORT).show()
